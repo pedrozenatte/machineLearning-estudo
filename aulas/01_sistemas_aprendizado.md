@@ -12,7 +12,7 @@ O aprendizado indutivo pode ser:
 - Não supervisionado
 
 ### 1) Aprendizado Supervisionado
-No aprendizado supervisionado, o modelo é treinado com dados que já possuem respostas conhecidas (dados rotulados - Labels). Cada exemplo contém características (entrada) e a classe correspondente (saída).
+No aprendizado supervisionado, o modelo é treinado com dados que já possuem respostas conhecidas (**dados rotulados - Labels**). Cada exemplo contém características (entrada) e a classe correspondente (saída), que é a **nossa variável alvo/resposta/variável dependente**.
 O objetivo é fazer com que o modelo aprenda a relação entre entrada e saída, para depois conseguir classificar corretamente novos dados que ainda não possuem rótulo. 
 
 ### 2) Aprendizado não-supervisionado
@@ -30,6 +30,10 @@ No aprendizado supervisionado, existe a figura de um professor, ou seja, os dado
 No aprendizado não-supervisionado, o sitema recebe apenas informações do ambiente, representadas pelo vetor de estado do sistema, sem que alguém informe a resposta correta. A partir desses dados, ele tenta identificar padrões, semelhanças ou agrupamentos existentes. 
 
 ![Paradigma de reforço](../imagens/reforço.png)
+
+
+## Referências
+https://www.youtube.com/watch?v=dPL3eZNjsMs&list=PLvlkVRRKOYFR6_LmNcJliicNan2TYeFO2&index=2
 
 
 ## Bibliotecas
