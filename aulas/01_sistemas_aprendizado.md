@@ -30,11 +30,3 @@ No aprendizado supervisionado, existe a figura de um professor, ou seja, os dado
 No aprendizado não-supervisionado, o sitema recebe apenas informações do ambiente, representadas pelo vetor de estado do sistema, sem que alguém informe a resposta correta. A partir desses dados, ele tenta identificar padrões, semelhanças ou agrupamentos existentes. 
 
 ![Paradigma de reforço](../imagens/reforço.png)
-
-
-## Referências
-https://www.youtube.com/watch?v=dPL3eZNjsMs&list=PLvlkVRRKOYFR6_LmNcJliicNan2TYeFO2&index=2
-
-
-## Bibliotecas
-https://scikit-learn.org/stable/index.html
