@@ -6,6 +6,7 @@ Para ensinar um computador a realizar essa mesma identificação, organizamos os
 
 ![Qual é a fruta?](../imagens/qual_fruta.png)
 
+
 ## O que é Machine Learning?
 É um subcampo da Engenharia e da Ciência de Computação que evolui do estudo de reconhecimento de padrões e da teoria do aprendizado computacional em IA. Em 1959, Arthur Samuel definiu o ML como o "campo de estudo que dá aos computadores a habilidade de aprender sem serem explicitamente programados". 
 
