@@ -13,11 +13,52 @@ $$
 Y=W⋅X+B
 $$
 
+$$
+ERRO = y_i - \hat{y_i}
+$$
+
 Nessa equação, $W$ representa a inclinação da reta, indicando quanto o valor de $Y$ tende a mudar quando $X$ aumenta. Já $B$ representa o ponto em que a reta intercepta o eixo $Y$, ou seja, o valor inicial previsto quando $X = 0$. 
 
-O **objetivo** do aprendizado é encontrar os valores adequados de $W$ e $B$ para que a reta produza previsões o mais próximas possível dos valores reais observados nos dados. Depois de aprendida, essa relação pode ser usada para estimar $Y$ para novos valores de $X$.
+O **objetivo** do aprendizado é encontrar os valores adequados de $W$ e $B$ para que a reta produza previsões o mais próximas possível dos valores reais observados nos dados, ou seja, que **MINIMIZE** a soma do erro, mas normalmente se utiliza o erro quadrático. Depois de aprendida, essa relação pode ser usada para estimar $Y$ para novos valores de $X$.
+
+Queremos minimizar isso:
+
+$$
+\sum_{i=0}^{n-1} \left(y_i - \hat{y}_i\right)^2
+$$
+
+Mas quem é $\hat{y_i}$?
+
+$$
+\hat{y_i} = a + wx_i
+$$
+
+Substituindo, temos:
+
+$$
+\sum_{i=0}^{n-1} \left(y_i - (a + wx_i)\right)^2
+$$
+
+Como queremos o mínimo erro dessa função, derivamos e igualamos a zero. 
+
+$$
+\frac{\partial}{\partial \hat{a}}
+\sum_{i=1}^{n}
+\left(y_i - \left(\hat{a} + \hat{w}x_i\right)\right)^2
+= 0
+$$
+
+$$
+\frac{\partial}{\partial \hat{w}}
+\sum_{i=1}^{n}
+\left(y_i - \left(\hat{a} + \hat{w}x_i\right)\right)^2
+= 0
+$$
+
+##### ATENÇÃO: Essa função não tem um ponto de máximo, portanto não precisa se preocupar em derivar mais uma vez para garantir que é ponto de mínimo mesmo, uma vez que sempre teremos uma reta que é mais distânte dos dados. 
 
 Na regressão linear univariada, temos o método dos mínimos quadrados para gerar a reta que melhor se aproxima dos dados. 
+**OBS:** Existem outros métodos, como Método de Máxima Verossimilhança (inferência clássica), Método Bayesiano (inferência bayesiana)
 
 ##### Atenção: Queremos sempre reduzir o erro quadrático. 
 
@@ -31,6 +72,14 @@ $$
 
 Por exemplo, para prever o preço de uma casa, podem ser consideradas simultaneamente variáveis como área, número de quartos, localização e idade do imóvel.
 Nesse caso, $W$ deixa de ser um único valor e passa a ser um vetor de pesos. Cada variável de entrada terá seu próprio peso, indicando o quanto ela contribui para a previsão final:
+
+$$
+\hat{y}_i = \hat{w}_0 + \hat{w}_1 x_{i1} + \hat{w}_2 x_{i2}
+$$
+
+$$
+\hat{y}_i = \hat{w}_0 + \sum_{j=1}^{p} \hat{w}_j x_{ij}
+$$
 
 $$
 \hat{Y} = X W
@@ -202,3 +251,142 @@ Nesse caso, os pesos tendem a diminuir, mas geralmente não chegam exatamente a 
 Além disso, **em ambos os casos**, o parâmetro λ controla a intensidade da regularização, ou seja, quanto maior seu valor, maior será a penalização imposta aos pesos e mais simples tende a ser o modelo.
 
 **OBS:** Normalmente, quando queremos punir os outliers, usamos o modelo L2. 
+
+
+## Árvore de Decisão com Regressão 
+Para a regressão, a árvore percorre todo o dataset fazendo cortes e separando grupos. Cada grupo tem uma média. 
+
+![Árvore Regressao](../image/arvore_regressao.png)
+
+**Qual é o melhor ponto de corte?**
+O melhor ponto de corte é aquele que separa os dados em dois grupos com o menor erro possível.
+
+Imagine duas variáveis de entrada, por exemplo:
+
+- $x_1$: tamanho da casa;
+- $x_2$: número de quartos;
+
+E a variável que queremos prever:
+
+- $y$: preço da casa.
+
+A árvore testa cortes como:
+
+$$
+x_1 \leq 80
+$$
+
+ou
+
+$$
+x_2 \leq 2
+$$
+
+Cada corte divide os dados em dois grupos:
+
+$$
+R_1 = \{x_i \mid x_1 \leq 80\}
+$$
+
+$$
+R_2 = \{x_i \mid x_1 > 80\}
+$$
+
+Para cada grupo, a previsão da árvore é a média dos valores reais de $y$ naquele grupo:
+
+$$
+\hat{y}_{R_1} = \frac{1}{n_1} \sum_{i \in R_1} y_i
+$$
+
+$$
+\hat{y}_{R_2} = \frac{1}{n_2} \sum_{i \in R_2} y_i
+$$
+
+Ou seja, todos os exemplos que caírem em uma mesma folha recebem a mesma previsão, que é a média daquela folha.
+
+Para cada ponto, o erro é a diferença entre seu valor real e a média do grupo:
+
+$$
+e_i = y_i - \hat{y}_R
+$$
+
+Como erros positivos e negativos poderiam se cancelar, usamos o erro ao quadrado:
+
+$$
+e_i^2 = (y_i - \hat{y}_R)^2
+$$
+
+Então, para avaliar um corte, normalmente calculamos a soma dos erros quadráticos dos dois grupos:
+
+$$
+\text{Erro do corte} =
+\sum_{i \in R_1}(y_i - \hat{y}_{R_1})^2
++
+\sum_{i \in R_2}(y_i - \hat{y}_{R_2})^2
+$$
+
+O melhor corte é aquele que minimiza esse valor.
+
+
+#### Um detalhe importante sobre usar MSE
+
+A ideia de somar os erros dos dois grupos está certa, mas não devemos simplesmente somar o MSE de cada grupo sem considerar a quantidade de pontos em cada um.
+Por exemplo, um grupo com 2 pontos e outro com 100 pontos não devem ter exatamente o mesmo peso na escolha do corte.
+
+Por isso, a árvore pode usar a soma dos erros quadráticos ou, equivalentemente, o MSE ponderado:
+
+$$
+\text{MSE ponderado} =
+\frac{n_1}{n} \text{MSE}_1
++
+\frac{n_2}{n} \text{MSE}_2
+$$
+
+Em que:
+
+- $n_1$ é a quantidade de pontos no grupo 1;
+- $n_2$ é a quantidade de pontos no grupo 2;
+- $n = n_1 + n_2$.
+
+#### E com duas variáveis?
+
+Com duas variáveis, a árvore não desenha necessariamente uma reta vertical separando os dados. Ela faz cortes em uma variável por vez.
+
+Por exemplo:
+
+Primeiro corte:
+
+$$
+x_1 \leq 80
+$$
+
+Em um dos grupos, um novo corte:
+
+$$
+x_2 \leq 2
+$$
+
+Em outro grupo, outro corte:
+
+$$
+x_1 \leq 120
+$$
+
+Geometricamente, isso cria regiões retangulares no plano. Cada região terá uma média de $y$ associada a ela.
+
+#### Sobre overfitting
+Se a árvore não tiver limitações, ela pode continuar criando cortes até formar grupos extremamente pequenos, possivelmente com apenas um ponto em cada folha.
+Nesse caso, para os dados de treinamento, o erro pode chegar a ser praticamente zero, porque cada ponto recebe como previsão o seu próprio valor:
+
+$$
+\hat{y}_i = y_i
+$$
+
+Porém, a árvore passa a memorizar os dados de treinamento, inclusive seus ruídos, e pode prever mal novos dados, o que gera **overfitting**.
+
+Para controlar isso, usamos parâmetros como:
+
+- `max_depth`: profundidade máxima da árvore;
+- `min_samples_split`: número mínimo de pontos necessário para dividir um nó;
+- `min_samples_leaf`: número mínimo de pontos em cada folha;
+- `ccp_alpha`: parâmetro utilizado para a poda da árvore.
