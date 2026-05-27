@@ -19,14 +19,14 @@ O objetivo é fazer com que o modelo aprenda a relação entre entrada e saída,
 No aprendizado não=supervisionado, o modelo recebe os dados de treinamento sem respostas ou classificações previamente definidas. Assim, ele analisa as características dos exemplos e identifica possível semelhanãs entre eles, organizando-os em grupos, chamados clusters.
 Depois que esses agrupamentos são formados, é necessário analisar e interpretar o resultado, de modo a entender o que cada grupo representa. Por exemplo, em uma base de clientes, o algoritmo pode separar pessoas com comportamentos de compra semelhantes, mas cabe à análise posterior descobrir o perfil de cada grupo. 
 
-![Modelo de aprendizado](../imagens/tipos_aprendizado.png)
+![Modelo de aprendizado](../image/tipos_aprendizado.png)
 
 
 ## Paradigmas de aprendizado
 
-![Paradigmas](../imagens/paradigmas_aprendizado.png)
+![Paradigmas](../image/paradigmas_aprendizado.png)
 
 No aprendizado supervisionado, existe a figura de um professor, ou seja, os dados de treinamento já fornecem exemplos deentrada e a saída correta esperada. Nesse caso, o sistema aprende a relação entre essas entradas e saídas para, posteriormente, prever a resposta de novos dados. 
 No aprendizado não-supervisionado, o sitema recebe apenas informações do ambiente, representadas pelo vetor de estado do sistema, sem que alguém informe a resposta correta. A partir desses dados, ele tenta identificar padrões, semelhanças ou agrupamentos existentes. 
 
-![Paradigma de reforço](../imagens/reforço.png)
+![Paradigma de reforço](../image/reforço.png)

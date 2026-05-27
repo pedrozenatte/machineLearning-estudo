@@ -3,7 +3,7 @@
 Na regressão, vamos aproximar pontos por uma reta. 
 
 ## Regressão Linear Univariada
-![Gráfico regressão](../imagens/grafico_regressao.png)
+![Gráfico regressão](../image/grafico_regressao.png)
 
 A regressão linear univariada é uma técnica de aprendizado supervisionado utilizada para prever um valor numérico de saída (Y) a partir de uma única variável de entrada (X). O termo univariada indica justamente que existe apenas uma variável sendo usada para fazer a previsão.
 No gráfico, os pontos azuis representam os exemplos conhecidos da base de dados, formados por pares de entrada e saída, como $X = 0,2$ associado a $Y = 3,0$. A linha vermelha representa a reta que melhor aproxima o comportamento geral desses pontos.
@@ -91,7 +91,7 @@ $$
 
 
 ## Underfitting e Overfitting
-![Underfitting e Overfitting](../imagens/under_over.png)
+![Underfitting e Overfitting](../image/under_over.png)
 
 
 ## Implementação Regressão Linear
@@ -111,7 +111,7 @@ https://scikit-learn.org/stable/modules/linear_model.html#ordinary-least-squares
 ## Regressão Logística
 Apesar do nome regressão, a regressão logística é uma técnica utilizada principalmente em problemas de classificação. Nesse caso, o **objetivo** não é prever um valor contínuo, como um preço ou uma temperatura, mas decidir a qual classe um exemplo pertence.
 
-![Exemplo de regressão logística](../imagens/exemplo_logistico.png)
+![Exemplo de regressão logística](../image/exemplo_logistico.png)
 
 Nesse caso, deseja-se classificar estudantes em duas categorias, sendo elas aprovados ou não aprovados no vestibular.
 A regressão logística analisa esses dados e aprende uma separação entre as duas classes. Dessa forma, para um novo estudante, o modelo calcula a probabilidade de ele pertencer a uma das categorias, como a probabilidade de ser aprovado. A partir de um limite, normalmente 50%, a previsão final é convertida em uma classe: 
@@ -138,7 +138,7 @@ $$
 Porém, esse valor $z$ não é usado diretamente como resposta final. Na realidade, ele passa por uma função a mais, na qual faz a saída ficar limitada entre 0 e 1, podendo ser interpretada como uma probabilidade ou pertecente a um grupo. 
 
 ### Funções da Regressão Logística
-![Sigmoid](../imagens/sigmoid.png)
+![Sigmoid](../image/sigmoid.png)
 
 $$
 g(x) = \frac{1}{1 + e^{-x}}
@@ -151,7 +151,7 @@ A partir dessa probabilidade, define-se uma regra de classificação. Geralmente
 Existem outras funções, e o importante delas é transformar o número, o qual foi obtido pela regressão linear, em uma classe 0 ou 1 (classificação binária). 
 
 ##### Outras funções
-![Outras funções](../imagens/outras_funcoes.png)
+![Outras funções](../image/outras_funcoes.png)
 
 ## Implementação da Regressão Logística 
 

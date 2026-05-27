@@ -4,7 +4,7 @@ Como podemos ensinar uma criança a reconhecer uma fruta?
 Apresentamos diferentes exemplos, descrevemos características como formato arredondado, cor vermelha, sabor doce e textura suculenta, e informamos o nome correspondente, como maçã.
 Para ensinar um computador a realizar essa mesma identificação, organizamos os exemplos em uma tabela, de modo que cada linha representa uma fruta, as colunas apresentam suas características e uma coluna final indica o nome da fruta. Dessa forma, o computador pode aprender a relacionar determinadas características a uma categoria específica.
 
-![Qual é a fruta?](../imagens/qual_fruta.png)
+![Qual é a fruta?](../image/qual_fruta.png)
 
 
 ## O que é Machine Learning?
