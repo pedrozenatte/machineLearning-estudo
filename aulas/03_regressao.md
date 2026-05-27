@@ -30,28 +30,28 @@ $$
 Mas quem é $\hat{y_i}$?
 
 $$
-\hat{y_i} = a + wx_i
+\hat{y_i} = b + wx_i
 $$
 
 Substituindo, temos:
 
 $$
-\sum_{i=0}^{n-1} \left(y_i - (a + wx_i)\right)^2
+\sum_{i=0}^{n-1} \left(y_i - (b + wx_i)\right)^2
 $$
 
 Como queremos o mínimo erro dessa função, derivamos e igualamos a zero. 
 
 $$
-\frac{\partial}{\partial \hat{a}}
+\frac{\partial}{\partial \hat{b}}
 \sum_{i=1}^{n}
-\left(y_i - \left(\hat{a} + \hat{w}x_i\right)\right)^2
+\left(y_i - \left(\hat{b} + \hat{w}x_i\right)\right)^2
 = 0
 $$
 
 $$
 \frac{\partial}{\partial \hat{w}}
 \sum_{i=1}^{n}
-\left(y_i - \left(\hat{a} + \hat{w}x_i\right)\right)^2
+\left(y_i - \left(\hat{b} + \hat{w}x_i\right)\right)^2
 = 0
 $$
 
@@ -82,7 +82,7 @@ $$
 $$
 
 $$
-\hat{Y} = X W
+\hat{Y} = X W + b 
 $$
 
 Assim como na regressão univariada, o objetivo é encontrar os pesos que minimizam a diferença entre os valores reais e os valores previstos. A solução matricial é a equação normal:
