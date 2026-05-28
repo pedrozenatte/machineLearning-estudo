@@ -253,7 +253,7 @@ Além disso, **em ambos os casos**, o parâmetro λ controla a intensidade da re
 **OBS:** Normalmente, quando queremos punir os outliers, usamos o modelo L2. 
 
 
-## Árvore de Decisão com Regressão 
+## Árvore de Decisão com Regressão Linear
 Para a regressão, a árvore percorre todo o dataset fazendo cortes e separando grupos. Cada grupo tem uma média. 
 
 ![Árvore Regressao](../image/arvore_regressao.png)
